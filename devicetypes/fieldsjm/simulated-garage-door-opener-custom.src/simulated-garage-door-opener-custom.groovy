@@ -14,7 +14,7 @@
  *
  */
 metadata {
-	definition (name: "Simulated Garage Door Opener (Custom)", namespace: "fieldsjm", author: "SmartThings") {
+	definition (name: "Simulated Garage Door Opener (Custom)", namespace: "Smartthings", author: "fieldsjm") {
 		capability "Actuator"
 		capability "Door Control"
         capability "Garage Door Control"
