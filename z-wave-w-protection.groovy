@@ -12,7 +12,7 @@
  *
  */
 metadata {
-	definition (name: "Z-Wave Switch w/Protection", namespace: "smartthings", author: "fieldsjm", ocfDeviceType: "oic.d.switch", runLocally: true, minHubCoreVersion: '000.017.0012', executeCommandsLocally: false) {
+	definition (name: "Z-Wave Switch w/Protection", namespace: "smartthings", author: "fieldsjm", ocfDeviceType: "oic.d.switch", vid: "generic-switch", runLocally: true, minHubCoreVersion: '000.017.0012', executeCommandsLocally: false) {
 		capability "Actuator"
 		capability "Indicator"
 		capability "Switch"
