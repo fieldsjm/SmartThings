@@ -14,10 +14,10 @@
  *
  */
 metadata {
-	definition (name: "Simulated Garage Door Opener (Custom)", namespace: "Smartthings", author: "fieldsjm", vid: "generic-contact-2", ocfdevicetype: "oic.d.garagedoor", mnmn: "SmartThings") {
+	definition (name: "Simulated Garage Door Opener (Custom)", namespace: "Smartthings", author: "fieldsjm", vid: "generic-contact-4", ocfdevicetype: "oic.d.garagedoor", mnmn: "SmartThings") {
 		capability "Actuator"
 		capability "Door Control"
-    capability "Garage Door Control"
+    	capability "Garage Door Control"
 		capability "Contact Sensor"
 		capability "Refresh"
 		capability "Sensor"
