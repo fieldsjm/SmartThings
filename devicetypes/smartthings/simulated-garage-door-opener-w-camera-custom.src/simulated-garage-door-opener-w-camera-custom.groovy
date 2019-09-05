@@ -43,7 +43,7 @@ metadata {
 
 	tiles {
 
-        standardTile("toggle", "device.door", width: 2, height: 2) {
+        standardTile("toggle", "device.door", width: 3, height: 2) {
 			state("closed", label:'${name}', action:"door control.open", icon:"st.doors.garage.garage-closed", backgroundColor:"#00A0DC", nextState:"opening")
 			state("open", label:'${name}', action:"door control.close", icon:"st.doors.garage.garage-open", backgroundColor:"#e86d13", nextState:"closing")
 			state("opening", label:'${name}', icon:"st.doors.garage.garage-closed", backgroundColor:"#e86d13")
@@ -56,7 +56,7 @@ metadata {
 		standardTile("close", "device.door", inactiveLabel: false, decoration: "flat") {
 			state "default", label:'close', action:"door control.close", icon:"st.doors.garage.garage-closing"
 		}
-        standardTile("take", "device.image", width: 1, height: 1, canChangeIcon: false, inactiveLabel: true, canChangeBackground: false) {
+        standardTile("take", "device.image", width: 1, height: 1, canChangeIcon: false, inactiveLabel: true, canChangeBackground: false, decoration: "flat") {
         	state "take", label: "Take", action: "Image Capture.take", icon: "st.camera.camera", backgroundColor: "#FFFFFF", nextState:"taking"
             state "taking", label:'Taking', action: "", icon: "st.camera.take-photo", backgroundColor: "#53a7c0"
             state "image", label: "Take", action: "Image Capture.take", icon: "st.camera.camera", backgroundColor: "#FFFFFF", nextState:"taking"
@@ -69,7 +69,7 @@ metadata {
             }
    		carouselTile("cameraDetails", "device.image", width: 3, height: 2) { }
         main "toggle"
-        details(["cameraDetails", "toggle", "open", "close", "take", "blank", "refresh"])
+        details(["cameraDetails", "take", "open", "close", "toggle"])
         }
 }
 
