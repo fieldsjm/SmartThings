@@ -12,8 +12,9 @@
  *
  */
 metadata {
-    definition (name: "Roomba Control v2", namespace: "SmartThingsDHs", author: "fieldsjm", mnmn: "SmartThings", vid: "generic.switch") {
+    definition (name: "Roomba Control v2", namespace: "SmartThingsDHs", author: "fieldsjm", mnmn: "SmartThings", vid: "generic-button-1", ocfDeviceType: "oic.d.robotcleaner") {
         capability "Actuator"
+        capability "Alarm"
         capability "Button"
         capability "Holdable Button"
         capability "Configuration"
@@ -26,41 +27,35 @@ metadata {
         command "push2"
         command "push3"
         command "push4"
-        command "hold1"
-        command "hold2"
-        command "hold3"
-        command "hold4"
+        command "push5"
     }
 
     simulator {
-        status "button 1 pushed":  "command: 2001, payload: 01"
-        status "button 1 held":  "command: 2001, payload: 15"
-        status "button 2 pushed":  "command: 2001, payload: 29"
-        status "button 2 held":  "command: 2001, payload: 3D"
-        status "button 3 pushed":  "command: 2001, payload: 51"
-        status "button 3 held":  "command: 2001, payload: 65"
-        status "button 4 pushed":  "command: 2001, payload: 79"
-        status "button 4 held":  "command: 2001, payload: 8D"
-        status "wakeup":  "command: 8407, payload: "
     }
+    
     tiles (scale: 2){
 	/*Status tile based on intended action*/
-	valueTile("Status", "device.longText", width: 6, height: 4) {
-		state ("Ready", label: "Ready", icon:"st.Electronics.electronics13", backgroundColor:"#8CFC03")
-		state ("Running", label: "Running", icon:"st.Health & Wellness.health7", backgroundColor:"#078bf7")
-		state ("Paused", label: "Paused", icon:"http://cdn.device-icons.smartthings.com/sonos/pause-icon@2x.png", backgroundColor:"#FC030F")
-		state ("Docking", label: "Docking", icon:"st.presence.house.unlocked", backgroundColor:"#5F07F7")
-		state ("Docked", label: "Docked", icon:"st.presence.house.secured", backgroundColor:"#5F07F7")
-		state ("Ended", label: "Job Complete", icon:"st.Electronics.electronics13", backgroundColor:"#8CFC03")
-        state ("Error", label: "Error", icon:"https://github.com/fieldsjm/Resources/blob/master/warning.png?raw=true", backgroundColor:"#FC030F")
-            
+	multiAttributeTile(name:"status", type: "generic", width: 6, height: 4){
+    	tileAttribute ("device.status", key: "PRIMARY_CONTROL") {
+			attributeState ("Ready", label: "Ready", icon:"st.samsung.da.RC_ic_rc", backgroundColor:"#8CFC03")
+			attributeState ("Running", label: "Cleaning\nIn-Process", icon:"st.Health & Wellness.health7", backgroundColor:"#078bf7")
+			attributeState ("Paused", label: "Cleaning\nIn-Process", icon:"http://cdn.device-icons.smartthings.com/sonos/pause-icon@2x.png", backgroundColor:"#FC030F")
+			attributeState ("Docking", label: "Docking", icon:"st.presence.house.unlocked", backgroundColor:"#5F07F7")
+			attributeState ("Docked", label: "Docked", icon:"st.presence.house.secured", backgroundColor:"#5F07F7")
+			attributeState ("Stopped", label: "Cleaning\nIn-Process", icon:"https://raw.githubusercontent.com/fieldsjm/Resources/master/stop.png", backgroundColor:"#FC030F")
+			attributeState ("Ended", label: "Cleaning\nComplete", icon:"st.samsung.da.RC_ic_rc", backgroundColor:"#8CFC03")
+			attributeState ("Error", label: "Error", icon:"https://github.com/fieldsjm/Resources/blob/master/warning.png?raw=true", backgroundColor:"#FC030F")
 		}
-	standardTile("button", "device.button") {
-            state "default", label: "", icon: "", backgroundColor: "#ffffff"
+        tileAttribute ("device.Text", key: "SECONDARY_CONTROL") {
+        	attributeState ("Running", label: "Running")
+            attributeState ("Paused", label: "Paused")
+            attributeState ("Stopped", label: "Stopped")
+            attributeState ("Docked", label: "Docked")            
         }
-        /*Start*/
+	}
+	   /*Start*/
         standardTile("push1", "device.button", width: 3, height: 2, decoration: "flat") {
-            state "default", label: "Start", icon:"st.Electronics.electronics13", backgroundColor: "#ffffff", action: "push1"
+            state "default", label: "Start", icon:"st.samsung.da.RC_ic_rc", backgroundColor: "#ffffff", action: "push1"
         }
         /*Pause*/
         standardTile("push2", "device.button", width: 3, height: 2, decoration: "flat") {
@@ -70,23 +65,32 @@ metadata {
         standardTile("push3", "device.button", width: 3, height: 2, decoration: "flat") {
             state "default", label: "Dock", icon:"st.nest.nest-home", backgroundColor: "#ffffff", action: "push3"
         }
-        /*Reset*/
+        /*Stop*/
         standardTile("push4", "device.button", width: 3, height: 2, decoration: "flat") {
-            state "default", label: "Reset", icon:"st.secondary.refresh-icon", backgroundColor: "#ffffff", action: "push4"
+            state "default", label: "", icon:"st.sonos.stop-btn", backgroundColor: "#ffffff", action: "push4"
         }
-        /*Hidden switch for IFTT feedback of error*/
-		standardTile("switch", "device.switch", inactiveLabel: false, width: 3, height: 1, decoration: "flat"){
+        /*Reset*/
+        standardTile("push5", "device.button", width: 6, height: 2, decoration: "flat") {
+            state "default", label: "Reset", icon:"st.secondary.refresh-icon", backgroundColor: "#ffffff", action: "push5"
+        }
+        /*Switch for IFTT feedback of Started - Hidden by default*/
+        standardTile("switch", "device.switch", inactiveLabel: false, width: 6, height: 2, decoration: "flat"){
 			state("off", label: '${name}', action: "switch.on", backgroundColor: "#ffffff", nextState: "on", defaultState: "true")
 			state("on", label: '${name}', action: "switch.off", backgroundColor: "#00a0dc", nextState: "off")
 		}
-        /*Hidden lock for IFTT feedback of mission complete*/
-		standardTile("lock", "device.lock", inactiveLabel: false, width: 3, height: 1, decoration: "flat"){
+        /*Alarm for IFTT feedback of Error - Hidden by default*/
+        standardTile("alarm", "device.alarm", inactiveLabel: false, width: 6, height: 2, decoration: "flat") {
+			state("off", label:'off', action:'alarm.strobe', icon:"st.alarm.alarm.alarm", backgroundColor:"#ffffff", nextState: "strobe", defaultState: "true")
+			state("strobe", label:'strobe!', action:'alarm.off', icon:"st.alarm.alarm.alarm", backgroundColor:"#e86d13", nextState: "off")
+		}
+        /*Lock for IFTT feedback of mission complete - Hidden by default*/
+		standardTile("lock", "device.lock", inactiveLabel: false, width: 6, height: 2, decoration: "flat"){
 			state("unlocked", label: '${name}', action: "lock.lock", backgroundColor: "#ffffff", nextState: "locked", defaultState: "true")
 			state("locked", label: '${name}', action: "lock.unlock", backgroundColor: "#00a0dc", nextState: "unlocked")
 		}
         
-        main "Status"
-        details(["Status","push1","push2","push3","push4"])
+        main "status"
+        details(["status","push1","push2","push3","push4", "push5"])
     }
 }
 
@@ -97,30 +101,42 @@ def parse(String description) {
 /*Start*/
 def push1() {
     push(1)
-	sendEvent(name: "longText", value: "Running")
 }
 
 /*Pause*/
 def push2() {
     push(2)
-    sendEvent(name: "longText", value: "Paused")
+    sendEvent(name: "status", value: "Paused")
+    sendEvent(name: "Text", value: "Paused")
 }
 
-/*Dock*/
+/*Dock with conversational delay to Docked then Ready Status - no feedback available*/
 def push3() {
     push(3)
-    sendEvent(name: "longText", value: "Docking")
-    runin(60, docked)
+    sendEvent(name: "status", value: "Docking")
+    sendEvent(name: "Text", value: "Running")
+    runIn(60, docked)
 }
 def docked() {
-	sendEvent(name: "longText", value: "Docked")
-    runin(10, push4)
+	sendEvent(name: "status", value: "Docked")
+    sendEvent(name: "Text", value: "Docked")
+    runIn(10, push5)
 }
 
-/*Reset*/
+/*Stop*/
 def push4() {
     push(4)
-    sendEvent(name: "longText", value: "Ready")
+    sendEvent(name: "status", value: "Stopped")
+    sendEvent(name: "Text", value: "Stopped")
+}
+
+/*Status Reset*/
+def push5() {
+    push(5)
+	unlock()
+    off()    
+    sendEvent(name: "status", value: "Ready")
+    sendEvent(name: "Text", value: "Docked")
 }
 
 private push(button) {
@@ -128,27 +144,35 @@ private push(button) {
     sendEvent(name: "button", value: "pushed", data: [buttonNumber: button], descriptionText: "$device.displayName button $button was pushed", isStateChange: true)
 }
 
+/*Feedback Mechanisms*/
+/*Started*/
+def on(){
+	sendEvent(name: "switch", value: "on")
+    sendEvent(name: "status", value: "Running")
+    sendEvent(name: "Text", value: "Running")
+    }
+def off(){    
+    sendEvent(name: "switch", value: "off")
+    sendEvent(name: "alarm", value: "off")
+    sendEvent(name: "status", value: "Ready")
+    sendEvent(name: "Text", value: "Docked")
+    }
 /*Misson Complete*/
 def lock() {
     sendEvent(name: "lock", value: "locked")
-    sendEvent(name: "longText", value: "Ended")
-    
-}
-
+    sendEvent(name: "status", value: "Ended")
+    sendEvent(name: "Text", value: "Docked")
+	}
 def unlock() {
     sendEvent(name: "lock", value: "unlocked")
-    sendEvent(name: "longText", value: "Ready")
-}
-
+    sendEvent(name: "status", value: "Ready")
+    sendEvent(name: "Text", value: "Docked")
+	}
 /*Error*/
-def on(){
-	sendEvent(name: "on", value: "switch")
-    sendEvent(name: "longText", value: "Error")
-    }
-    
-def off(){    
-    sendEvent(name: "off", value: "switch")
-    sendEvent(name: "longText", value: "Ready")
+def strobe() {
+	sendEvent(name: "alarm", value: "strobe")
+    sendEvent(name: "status", value: "Error")
+    sendEvent(name: "Text", value: "Stopped")
     }
 
 def installed() {
@@ -160,8 +184,9 @@ def updated() {
 }
 
 def initialize() {
-    sendEvent(name: "numberOfButtons", value: 4)
-    sendEvent(name: "longText", value: "Ready")
+    sendEvent(name: "numberOfButtons", value: 5)
+    sendEvent(name: "status", value: "Ready")
+    sendEvent(name: "Text", value: "Docked")
 
     sendEvent(name: "DeviceWatch-DeviceStatus", value: "online")
     sendEvent(name: "healthStatus", value: "online")
