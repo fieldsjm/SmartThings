@@ -16,7 +16,7 @@
 */
 
 metadata {
-	definition (name: "Generic Camera", namespace: "SmartThings", author: "fieldsjm", ocfDeviceType: "oic.d.camera", vid: "generic-camera") {
+	definition (name: "Generic Camera", namespace: "SmartThings", author: "fieldsjm", ocfDeviceType: "oic.d.camera", vid: "generic-camera-2") {
 		capability "Image Capture"
 		capability "Sensor"
 		capability "Actuator"

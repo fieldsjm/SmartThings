@@ -25,7 +25,9 @@ metadata {
         capability "Health Check"
          
 		attribute "Team","string"
+        attribute "Team_Abbr","string"
 		attribute "Year","string"
+		attribute "secondary_header","string"
         attribute "Value1","string"
     	attribute "Value2","string"
     	attribute "Value3","string"
@@ -97,6 +99,26 @@ metadata {
         attribute "Value69","string"
         attribute "Value70","string"
         attribute "Value71","string"
+        attribute "Value72","string"
+        attribute "Value73","string"
+        attribute "Value74","string"
+        attribute "Value75","string"
+        attribute "Value76","string"
+        attribute "Value77","string"
+        attribute "Value78","string"
+        attribute "Value79","string"
+        attribute "Value80","string"
+        attribute "Value81","string"
+        attribute "Value82","string"
+        attribute "Value83","string"
+		attribute "Value84","string"
+        attribute "Value85","string"
+        attribute "Value86","string"
+		attribute "Value87","string"
+        attribute "Value88","string"
+        attribute "Value89","string"
+        attribute "Value90","string"
+        attribute "Value91","string"
     
     	command "push1"
         command "changeValue1"
@@ -170,6 +192,26 @@ metadata {
         command "changeValue69"
         command "changeValue70"
         command "changeValue71"
+		command "changeValue72"
+        command "changeValue73"
+        command "changeValue74"
+        command "changeValue75"
+        command "changeValue76"
+        command "changeValue77"
+        command "changeValue78"
+        command "changeValue79"
+        command "changeValue80"
+        command "changeValue81"
+        command "changeValue82"
+        command "changeValue83"        
+        command "changeValue84"        
+        command "changeValue85"        
+        command "changeValue86"        
+        command "changeValue87"        
+        command "changeValue88"        
+        command "changeValue89"        
+        command "changeValue90"        
+        command "changeValue91"        
 	}
     
 preferences {
@@ -197,13 +239,56 @@ preferences {
                 attributeState("Pittsburgh", label:'', action: "push1", icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/221.png", backgroundColor: "#003594")
                 attributeState("Syracuse", label:'', action: "push1", icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/183.png", backgroundColor: "#6F777D")
                 attributeState("Virginia", label:'', action: "push1", icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/258.png", backgroundColor: "#232D4B")
-                attributeState("Virginia Tech", label:'', action: "push1", icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/259.png", backgroundColor: "#630031")
+                attributeState("Virginia Tech", label:'', action: "push1", icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/259.png", backgroundColor: "#CF4520")
                 attributeState("Wake Forest", label:'', action: "push1", icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/154.png", backgroundColor: "#000000")
             }
-			tileAttribute("device.Value57", key: "SECONDARY_CONTROL") {
-        		attributeState ("default", label:'Next:\n${currentValue}')
+			tileAttribute("device.Value68", key: "SECONDARY_CONTROL") {
+        		attributeState ("default", label:'${currentValue}')
             	}
 		}
+
+        valueTile("BoxScore_Header", "device.Value49", width: 6, height: 2){
+            state("default", label:'${currentValue}')}
+		valueTile("BoxScore_blank", "blank", width: 1, height: 1){
+            state("default", label:'')}
+		valueTile("BoxScore_QTR1", "qtr1", width: 1, height: 1){
+            state("default", label:'1')}
+		valueTile("BoxScore_QTR2", "qtr2", width: 1, height: 1){
+            state("default", label:'2')}
+		valueTile("BoxScore_QTR3", "qtr3", width: 1, height: 1){
+            state("default", label:'3')}
+		valueTile("BoxScore_QTR4", "device.Value63", width: 1, height: 1){
+            state("default", label:'4${currentValue}')}
+		valueTile("BoxScore_Final", "device.Value64", width: 1, height: 1){
+            state("default", label:'${currentValue}')}
+        valueTile("BoxScore_Away", "device.Value50", width: 1, height: 1){
+            state("default", label:'${currentValue}')}
+		valueTile("BoxScore_A_QTR1", "device.Value51", width: 1, height: 1){
+            state("default", label:'${currentValue}')}
+		valueTile("BoxScore_A_QTR2", "device.Value52", width: 1, height: 1){
+            state("default", label:'${currentValue}')}
+		valueTile("BoxScore_A_QTR3", "device.Value53", width: 1, height: 1){
+            state("default", label:'${currentValue}')}
+		valueTile("BoxScore_A_QTR4", "device.Value54", width: 1, height: 1){
+            state("default", label:'${currentValue}')}
+		valueTile("BoxScore_A_Final", "device.Value55", width: 1, height: 1){
+            state("default", label:'${currentValue}')}
+        valueTile("BoxScore_Home", "device.Value56", width: 1, height: 1){
+            state("default", label:'${currentValue}')}            
+		valueTile("BoxScore_H_QTR1", "device.Value57", width: 1, height: 1){
+            state("default", label:'${currentValue}')}
+		valueTile("BoxScore_H_QTR2", "device.Value58", width: 1, height: 1){
+            state("default", label:'${currentValue}')}
+		valueTile("BoxScore_H_QTR3", "device.Value59", width: 1, height: 1){
+            state("default", label:'${currentValue}')}
+		valueTile("BoxScore_H_QTR4", "device.Value60", width: 1, height: 1){
+            state("default", label:'${currentValue}')}
+		valueTile("BoxScore_H_Final", "device.Value61", width: 1, height: 1){
+            state("default", label:'${currentValue}')}
+        
+        valueTile("Play_Header", "device.Value62", width: 6, height: 3){
+            state("default", label:'Current Drive: ${currentValue}')}
+            
         valueTile("Logo", "device.Logo", width: 1, height: 1){
             state("Boston College", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/103.png")
             state("Clemson", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/228.png")
@@ -242,475 +327,913 @@ preferences {
 
         valueTile("Header", "device.Header", width: 4, height: 1){
             state "default", label:'${currentValue}'}
-        valueTile("Record", "device.Value58", width: 1, height: 1){
+        valueTile("Record", "device.Value69", width: 1, height: 1){
         	state "default", label:'${currentValue}'}
 
         valueTile("Value1", "device.Value1", width: 1, height: 1){
-            state("week1date", label:'Week 1\n${currentValue}')}
+            state("game1date", label:'${currentValue}')}
         valueTile("Value2", "device.Value2", width: 1, height: 1){
             state("OFF", label:'-')
-            state("Boston College", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/103.png")
-            state("Clemson", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/228.png")
-            state("Duke", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/150.png")
-            state("Florida State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/52.png")
-            state("Georgia Tech", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/59.png")
-            state("Louisville", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/97.png")
-            state("Miami", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2390.png")
-            state("NC State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/152.png")
-            state("North Carolina", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/153.png")
-            state("Notre Dame", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/87.png")
-            state("Pittsburgh", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/221.png")
-            state("Syracuse", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/183.png")
-            state("Virginia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/258.png")
-            state("Virginia Tech", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/259.png")
-            state("Wake Forest", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/154.png")
-            state("Furman", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/231.png")
-            state("Liberty", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2335.png")
-            state("Middle Tennessee", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2393.png")
-            state("Old Dominion", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/295.png")
-            state("Penn State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/213.png")
-            state("Rhode Island", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/227.png")
-            state("Richmond", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/257.png")
-            state("West Virginia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/277.png")}
+state("Default", label:'', icon:"https://a.thumbs.redditmedia.com/_JGFTy6V0bODjfUfADk3EsyNY_qwxCxAAqQP9IgWTX4.png")
+state("Boston College", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/103.png")
+state("Clemson", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/228.png")
+state("Duke", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/150.png")
+state("Florida State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/52.png")
+state("Georgia Tech", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/59.png")
+state("Louisville", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/97.png")
+state("Miami", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2390.png")
+state("NC State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/152.png")
+state("North Carolina", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/153.png")
+state("Notre Dame", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/87.png")
+state("Pittsburgh", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/221.png")
+state("Syracuse", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/183.png")
+state("Virginia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/258.png")
+state("Virginia Tech", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/259.png")
+state("Wake Forest", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/154.png")
+state("Alabama", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/333.png")
+state("Alabama State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2011.png")
+state("Boise State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/68.png")
+state("Charlotte", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2429.png")
+state("Delaware", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/48.png")
+state("Elon", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2210.png")
+state("Florida", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/57.png")
+state("Furman", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/231.png")
+state("Georgia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/61.png")
+state("Holy Cross", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/107.png")
+state("Kansas", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2305.png")
+state("Liberty", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2335.png")
+state("Maryland", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/120.png")
+state("Mid Tennessee", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2393.png")
+state("NC A&T", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2448.png")
+state("Ohio", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/195.png")
+state("Old Dominion", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/295.png")
+state("Penn State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/213.png")
+state("Rice", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/242.png")
+state("Richmond", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/257.png")
+state("Rutgers", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/164.png")
+state("S Carolina", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2579.png")
+state("Temple", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/218.png")
+state("Texas A&M", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/245.png")
+state("The Citadel", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2643.png")
+state("UCF", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2116.png")
+state("UL Monroe", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2433.png")
+state("URI", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/227.png")
+state("USF", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/58.png")
+state("Utah State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/328.png")
+state("W Michigan", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2711.png")
+state("West Virginia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/277.png")
+state("William & Mary", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2729.png")
+state("Wofford", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2747.png")
+
+}
         valueTile("Value2a", "device.Value2", width: 2, height: 1){
-            state("week1team", label:'${currentValue}')}
+            state("game1team", label:'${currentValue}')}
         valueTile("Value3", "device.Value3", width: 1, height: 1){
-            state("week1home", label:'${currentValue}')}
+            state("game1home", label:'${currentValue}')}
         valueTile("Value4", "device.Value4", width: 1, height: 1){
-            state("week1score", label:'${currentValue}')}
+            state("game1score", label:'${currentValue}')}
         valueTile("Value5", "device.Value5", width: 1, height: 1){
-            state("week2date", label:'Week 2\n${currentValue}')}
+            state("game2date", label:'${currentValue}')}
         valueTile("Value6", "device.Value6", width: 1, height: 1){
             state("OFF", label:'-')
-            state("Boston College", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/103.png")
-            state("Clemson", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/228.png")
-            state("Duke", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/150.png")
-            state("Florida State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/52.png")
-            state("Georgia Tech", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/59.png")
-            state("Louisville", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/97.png")
-            state("Miami", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2390.png")
-            state("NC State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/152.png")
-            state("North Carolina", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/153.png")
-            state("Notre Dame", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/87.png")
-            state("Pittsburgh", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/221.png")
-            state("Syracuse", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/183.png")
-            state("Virginia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/258.png")
-            state("Virginia Tech", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/259.png")
-            state("Wake Forest", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/154.png")
-            state("Furman", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/231.png")
-            state("Liberty", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2335.png")
-            state("Middle Tennessee", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2393.png")
-            state("Old Dominion", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/295.png")
-            state("Penn State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/213.png")
-            state("Rhode Island", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/227.png")
-            state("Richmond", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/257.png")
-            state("West Virginia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/277.png")}
+state("Default", label:'', icon:"https://a.thumbs.redditmedia.com/_JGFTy6V0bODjfUfADk3EsyNY_qwxCxAAqQP9IgWTX4.png")
+state("Boston College", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/103.png")
+state("Clemson", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/228.png")
+state("Duke", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/150.png")
+state("Florida State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/52.png")
+state("Georgia Tech", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/59.png")
+state("Louisville", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/97.png")
+state("Miami", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2390.png")
+state("NC State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/152.png")
+state("North Carolina", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/153.png")
+state("Notre Dame", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/87.png")
+state("Pittsburgh", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/221.png")
+state("Syracuse", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/183.png")
+state("Virginia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/258.png")
+state("Virginia Tech", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/259.png")
+state("Wake Forest", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/154.png")
+state("Alabama", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/333.png")
+state("Alabama State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2011.png")
+state("Boise State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/68.png")
+state("Charlotte", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2429.png")
+state("Delaware", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/48.png")
+state("Elon", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2210.png")
+state("Florida", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/57.png")
+state("Furman", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/231.png")
+state("Georgia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/61.png")
+state("Holy Cross", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/107.png")
+state("Kansas", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2305.png")
+state("Liberty", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2335.png")
+state("Maryland", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/120.png")
+state("Mid Tennessee", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2393.png")
+state("NC A&T", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2448.png")
+state("Ohio", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/195.png")
+state("Old Dominion", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/295.png")
+state("Penn State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/213.png")
+state("Rice", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/242.png")
+state("Richmond", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/257.png")
+state("Rutgers", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/164.png")
+state("S Carolina", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2579.png")
+state("Temple", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/218.png")
+state("Texas A&M", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/245.png")
+state("The Citadel", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2643.png")
+state("UCF", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2116.png")
+state("UL Monroe", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2433.png")
+state("URI", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/227.png")
+state("USF", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/58.png")
+state("Utah State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/328.png")
+state("W Michigan", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2711.png")
+state("West Virginia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/277.png")
+state("William & Mary", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2729.png")
+state("Wofford", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2747.png")
+
+}
         valueTile("Value6a", "device.Value6", width: 2, height: 1){
-            state("week2team", label:'${currentValue}')}
+            state("game2team", label:'${currentValue}')}
         valueTile("Value7", "device.Value7", width: 1, height: 1){
-            state("week2home", label:'${currentValue}')}
+            state("game2home", label:'${currentValue}')}
         valueTile("Value8", "device.Value8", width: 1, height: 1){
-            state("week2score", label:'${currentValue}')}
+            state("game2score", label:'${currentValue}')}
         valueTile("Value9", "device.Value9", width: 1, height: 1){
-            state("week3date", label:'Week 3\n${currentValue}')}
+            state("game3date", label:'${currentValue}')}
         valueTile("Value10", "device.Value10", width: 1, height: 1){
            	state("OFF", label:'-')
-            state("Boston College", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/103.png")
-            state("Clemson", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/228.png")
-            state("Duke", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/150.png")
-            state("Florida State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/52.png")
-            state("Georgia Tech", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/59.png")
-            state("Louisville", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/97.png")
-            state("Miami", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2390.png")
-            state("NC State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/152.png")
-            state("North Carolina", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/153.png")
-            state("Notre Dame", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/87.png")
-            state("Pittsburgh", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/221.png")
-            state("Syracuse", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/183.png")
-            state("Virginia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/258.png")
-            state("Virginia Tech", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/259.png")
-            state("Wake Forest", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/154.png")
-            state("Furman", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/231.png")
-            state("Liberty", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2335.png")
-            state("Middle Tennessee", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2393.png")
-            state("Old Dominion", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/295.png")
-            state("Penn State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/213.png")
-            state("Rhode Island", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/227.png")
-            state("Richmond", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/257.png")
-            state("West Virginia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/277.png")}
+state("Default", label:'', icon:"https://a.thumbs.redditmedia.com/_JGFTy6V0bODjfUfADk3EsyNY_qwxCxAAqQP9IgWTX4.png")
+state("Boston College", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/103.png")
+state("Clemson", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/228.png")
+state("Duke", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/150.png")
+state("Florida State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/52.png")
+state("Georgia Tech", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/59.png")
+state("Louisville", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/97.png")
+state("Miami", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2390.png")
+state("NC State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/152.png")
+state("North Carolina", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/153.png")
+state("Notre Dame", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/87.png")
+state("Pittsburgh", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/221.png")
+state("Syracuse", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/183.png")
+state("Virginia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/258.png")
+state("Virginia Tech", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/259.png")
+state("Wake Forest", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/154.png")
+state("Alabama", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/333.png")
+state("Alabama State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2011.png")
+state("Boise State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/68.png")
+state("Charlotte", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2429.png")
+state("Delaware", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/48.png")
+state("Elon", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2210.png")
+state("Florida", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/57.png")
+state("Furman", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/231.png")
+state("Georgia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/61.png")
+state("Holy Cross", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/107.png")
+state("Kansas", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2305.png")
+state("Liberty", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2335.png")
+state("Maryland", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/120.png")
+state("Mid Tennessee", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2393.png")
+state("NC A&T", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2448.png")
+state("Ohio", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/195.png")
+state("Old Dominion", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/295.png")
+state("Penn State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/213.png")
+state("Rice", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/242.png")
+state("Richmond", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/257.png")
+state("Rutgers", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/164.png")
+state("S Carolina", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2579.png")
+state("Temple", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/218.png")
+state("Texas A&M", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/245.png")
+state("The Citadel", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2643.png")
+state("UCF", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2116.png")
+state("UL Monroe", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2433.png")
+state("URI", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/227.png")
+state("USF", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/58.png")
+state("Utah State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/328.png")
+state("W Michigan", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2711.png")
+state("West Virginia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/277.png")
+state("William & Mary", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2729.png")
+state("Wofford", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2747.png")
+
+}
         valueTile("Value10a", "device.Value10", width: 2, height: 1){
-            state("week3team", label:'${currentValue}')}
+            state("game3team", label:'${currentValue}')}
         valueTile("Value11", "device.Value11", width: 1, height: 1){
-            state("week3home", label:'${currentValue}')}
+            state("game3home", label:'${currentValue}')}
         valueTile("Value12", "device.Value12", width: 1, height: 1){
-            state("week3score", label:'${currentValue}')}
+            state("game3score", label:'${currentValue}')}
         valueTile("Value13", "device.Value13", width: 1, height: 1){
-            state("week4date", label:'Week 4\n${currentValue}')}
+            state("game4date", label:'${currentValue}')}
         valueTile("Value14", "device.Value14", width: 1, height: 1){
            	state("OFF", label:'-')
-            state("Boston College", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/103.png")
-            state("Clemson", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/228.png")
-            state("Duke", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/150.png")
-            state("Florida State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/52.png")
-            state("Georgia Tech", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/59.png")
-            state("Louisville", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/97.png")
-            state("Miami", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2390.png")
-            state("NC State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/152.png")
-            state("North Carolina", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/153.png")
-            state("Notre Dame", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/87.png")
-            state("Pittsburgh", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/221.png")
-            state("Syracuse", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/183.png")
-            state("Virginia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/258.png")
-            state("Virginia Tech", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/259.png")
-            state("Wake Forest", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/154.png")
-            state("Furman", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/231.png")
-            state("Liberty", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2335.png")
-            state("Middle Tennessee", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2393.png")
-            state("Old Dominion", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/295.png")
-            state("Penn State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/213.png")
-            state("Rhode Island", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/227.png")
-            state("Richmond", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/257.png")
-            state("West Virginia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/277.png")}
+state("Default", label:'', icon:"https://a.thumbs.redditmedia.com/_JGFTy6V0bODjfUfADk3EsyNY_qwxCxAAqQP9IgWTX4.png")
+state("Boston College", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/103.png")
+state("Clemson", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/228.png")
+state("Duke", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/150.png")
+state("Florida State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/52.png")
+state("Georgia Tech", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/59.png")
+state("Louisville", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/97.png")
+state("Miami", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2390.png")
+state("NC State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/152.png")
+state("North Carolina", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/153.png")
+state("Notre Dame", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/87.png")
+state("Pittsburgh", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/221.png")
+state("Syracuse", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/183.png")
+state("Virginia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/258.png")
+state("Virginia Tech", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/259.png")
+state("Wake Forest", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/154.png")
+state("Alabama", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/333.png")
+state("Alabama State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2011.png")
+state("Boise State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/68.png")
+state("Charlotte", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2429.png")
+state("Delaware", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/48.png")
+state("Elon", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2210.png")
+state("Florida", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/57.png")
+state("Furman", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/231.png")
+state("Georgia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/61.png")
+state("Holy Cross", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/107.png")
+state("Kansas", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2305.png")
+state("Liberty", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2335.png")
+state("Maryland", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/120.png")
+state("Mid Tennessee", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2393.png")
+state("NC A&T", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2448.png")
+state("Ohio", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/195.png")
+state("Old Dominion", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/295.png")
+state("Penn State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/213.png")
+state("Rice", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/242.png")
+state("Richmond", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/257.png")
+state("Rutgers", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/164.png")
+state("S Carolina", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2579.png")
+state("Temple", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/218.png")
+state("Texas A&M", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/245.png")
+state("The Citadel", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2643.png")
+state("UCF", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2116.png")
+state("UL Monroe", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2433.png")
+state("URI", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/227.png")
+state("USF", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/58.png")
+state("Utah State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/328.png")
+state("W Michigan", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2711.png")
+state("West Virginia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/277.png")
+state("William & Mary", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2729.png")
+state("Wofford", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2747.png")
+
+}
         valueTile("Value14a", "device.Value14", width: 2, height: 1){
-            state("week4team", label:'${currentValue}')}
+            state("game4team", label:'${currentValue}')}
         valueTile("Value15", "device.Value15", width: 1, height: 1){
-            state("week4home", label:'${currentValue}')}
+            state("game4home", label:'${currentValue}')}
         valueTile("Value16", "device.Value16", width: 1, height: 1){
-            state("week4score", label:'${currentValue}')}
+            state("game4score", label:'${currentValue}')}
         valueTile("Value17", "device.Value17", width: 1, height: 1){
-            state("week5date", label:'Week 5\n${currentValue}')}
+            state("game5date", label:'${currentValue}')}
         valueTile("Value18", "device.Value18", width: 1, height: 1){
            	state("OFF", label:'-')
-            state("Boston College", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/103.png")
-            state("Clemson", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/228.png")
-            state("Duke", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/150.png")
-            state("Florida State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/52.png")
-            state("Georgia Tech", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/59.png")
-            state("Louisville", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/97.png")
-            state("Miami", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2390.png")
-            state("NC State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/152.png")
-            state("North Carolina", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/153.png")
-            state("Notre Dame", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/87.png")
-            state("Pittsburgh", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/221.png")
-            state("Syracuse", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/183.png")
-            state("Virginia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/258.png")
-            state("Virginia Tech", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/259.png")
-            state("Wake Forest", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/154.png")
-            state("Furman", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/231.png")
-            state("Liberty", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2335.png")
-            state("Middle Tennessee", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2393.png")
-            state("Old Dominion", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/295.png")
-            state("Penn State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/213.png")
-            state("Rhode Island", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/227.png")
-            state("Richmond", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/257.png")
-            state("West Virginia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/277.png")}
+state("Default", label:'', icon:"https://a.thumbs.redditmedia.com/_JGFTy6V0bODjfUfADk3EsyNY_qwxCxAAqQP9IgWTX4.png")
+state("Boston College", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/103.png")
+state("Clemson", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/228.png")
+state("Duke", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/150.png")
+state("Florida State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/52.png")
+state("Georgia Tech", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/59.png")
+state("Louisville", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/97.png")
+state("Miami", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2390.png")
+state("NC State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/152.png")
+state("North Carolina", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/153.png")
+state("Notre Dame", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/87.png")
+state("Pittsburgh", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/221.png")
+state("Syracuse", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/183.png")
+state("Virginia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/258.png")
+state("Virginia Tech", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/259.png")
+state("Wake Forest", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/154.png")
+state("Alabama", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/333.png")
+state("Alabama State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2011.png")
+state("Boise State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/68.png")
+state("Charlotte", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2429.png")
+state("Delaware", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/48.png")
+state("Elon", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2210.png")
+state("Florida", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/57.png")
+state("Furman", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/231.png")
+state("Georgia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/61.png")
+state("Holy Cross", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/107.png")
+state("Kansas", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2305.png")
+state("Liberty", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2335.png")
+state("Maryland", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/120.png")
+state("Mid Tennessee", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2393.png")
+state("NC A&T", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2448.png")
+state("Ohio", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/195.png")
+state("Old Dominion", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/295.png")
+state("Penn State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/213.png")
+state("Rice", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/242.png")
+state("Richmond", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/257.png")
+state("Rutgers", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/164.png")
+state("S Carolina", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2579.png")
+state("Temple", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/218.png")
+state("Texas A&M", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/245.png")
+state("The Citadel", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2643.png")
+state("UCF", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2116.png")
+state("UL Monroe", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2433.png")
+state("URI", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/227.png")
+state("USF", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/58.png")
+state("Utah State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/328.png")
+state("W Michigan", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2711.png")
+state("West Virginia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/277.png")
+state("William & Mary", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2729.png")
+state("Wofford", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2747.png")
+
+}
         valueTile("Value18a", "device.Value18", width: 2, height: 1){
-            state("week5team", label:'${currentValue}')}
+            state("game5team", label:'${currentValue}')}
         valueTile("Value19", "device.Value19", width: 1, height: 1){
-            state("week5home", label:'${currentValue}')}
+            state("game5home", label:'${currentValue}')}
         valueTile("Value20", "device.Value20", width: 1, height: 1){
-            state("week5score", label:'${currentValue}')}
+            state("game5score", label:'${currentValue}')}
         valueTile("Value21", "device.Value21", width: 1, height: 1){
-            state("week6date", label:'Week 6\n${currentValue}')}
+            state("game6date", label:'${currentValue}')}
         valueTile("Value22", "device.Value22", width: 1, height: 1){
            	state("OFF", label:'-')
-            state("Boston College", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/103.png")
-            state("Clemson", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/228.png")
-            state("Duke", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/150.png")
-            state("Florida State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/52.png")
-            state("Georgia Tech", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/59.png")
-            state("Louisville", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/97.png")
-            state("Miami", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2390.png")
-            state("NC State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/152.png")
-            state("North Carolina", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/153.png")
-            state("Notre Dame", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/87.png")
-            state("Pittsburgh", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/221.png")
-            state("Syracuse", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/183.png")
-            state("Virginia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/258.png")
-            state("Virginia Tech", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/259.png")
-            state("Wake Forest", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/154.png")
-            state("Furman", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/231.png")
-            state("Liberty", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2335.png")
-            state("Middle Tennessee", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2393.png")
-            state("Old Dominion", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/295.png")
-            state("Penn State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/213.png")
-            state("Rhode Island", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/227.png")
-            state("Richmond", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/257.png")
-            state("West Virginia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/277.png")}
+state("Default", label:'', icon:"https://a.thumbs.redditmedia.com/_JGFTy6V0bODjfUfADk3EsyNY_qwxCxAAqQP9IgWTX4.png")
+state("Boston College", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/103.png")
+state("Clemson", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/228.png")
+state("Duke", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/150.png")
+state("Florida State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/52.png")
+state("Georgia Tech", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/59.png")
+state("Louisville", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/97.png")
+state("Miami", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2390.png")
+state("NC State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/152.png")
+state("North Carolina", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/153.png")
+state("Notre Dame", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/87.png")
+state("Pittsburgh", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/221.png")
+state("Syracuse", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/183.png")
+state("Virginia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/258.png")
+state("Virginia Tech", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/259.png")
+state("Wake Forest", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/154.png")
+state("Alabama", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/333.png")
+state("Alabama State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2011.png")
+state("Boise State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/68.png")
+state("Charlotte", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2429.png")
+state("Delaware", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/48.png")
+state("Elon", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2210.png")
+state("Florida", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/57.png")
+state("Furman", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/231.png")
+state("Georgia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/61.png")
+state("Holy Cross", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/107.png")
+state("Kansas", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2305.png")
+state("Liberty", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2335.png")
+state("Maryland", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/120.png")
+state("Mid Tennessee", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2393.png")
+state("NC A&T", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2448.png")
+state("Ohio", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/195.png")
+state("Old Dominion", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/295.png")
+state("Penn State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/213.png")
+state("Rice", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/242.png")
+state("Richmond", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/257.png")
+state("Rutgers", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/164.png")
+state("S Carolina", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2579.png")
+state("Temple", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/218.png")
+state("Texas A&M", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/245.png")
+state("The Citadel", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2643.png")
+state("UCF", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2116.png")
+state("UL Monroe", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2433.png")
+state("URI", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/227.png")
+state("USF", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/58.png")
+state("Utah State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/328.png")
+state("W Michigan", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2711.png")
+state("West Virginia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/277.png")
+state("William & Mary", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2729.png")
+state("Wofford", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2747.png")
+
+}
         valueTile("Value22a", "device.Value22", width: 2, height: 1){
-            state("week6team", label:'${currentValue}')}
+            state("game6team", label:'${currentValue}')}
         valueTile("Value23", "device.Value23", width: 1, height: 1){
-            state("week6home", label:'${currentValue}')}
+            state("game6home", label:'${currentValue}')}
         valueTile("Value24", "device.Value24", width: 1, height: 1){
-            state("week6score", label:'${currentValue}')}
+            state("game6score", label:'${currentValue}')}
         valueTile("Value25", "device.Value25", width: 1, height: 1){
-            state("week7date", label:'Week 7\n${currentValue}')}
+            state("game7date", label:'${currentValue}')}
         valueTile("Value26", "device.Value26", width: 1, height: 1){
            	state("OFF", label:'-')
-            state("Boston College", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/103.png")
-            state("Clemson", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/228.png")
-            state("Duke", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/150.png")
-            state("Florida State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/52.png")
-            state("Georgia Tech", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/59.png")
-            state("Louisville", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/97.png")
-            state("Miami", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2390.png")
-            state("NC State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/152.png")
-            state("North Carolina", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/153.png")
-            state("Notre Dame", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/87.png")
-            state("Pittsburgh", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/221.png")
-            state("Syracuse", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/183.png")
-            state("Virginia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/258.png")
-            state("Virginia Tech", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/259.png")
-            state("Wake Forest", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/154.png")
-            state("Furman", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/231.png")
-            state("Liberty", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2335.png")
-            state("Middle Tennessee", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2393.png")
-            state("Old Dominion", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/295.png")
-            state("Penn State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/213.png")
-            state("Rhode Island", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/227.png")
-            state("Richmond", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/257.png")
-            state("West Virginia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/277.png")}
+state("Default", label:'', icon:"https://a.thumbs.redditmedia.com/_JGFTy6V0bODjfUfADk3EsyNY_qwxCxAAqQP9IgWTX4.png")
+state("Boston College", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/103.png")
+state("Clemson", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/228.png")
+state("Duke", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/150.png")
+state("Florida State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/52.png")
+state("Georgia Tech", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/59.png")
+state("Louisville", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/97.png")
+state("Miami", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2390.png")
+state("NC State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/152.png")
+state("North Carolina", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/153.png")
+state("Notre Dame", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/87.png")
+state("Pittsburgh", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/221.png")
+state("Syracuse", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/183.png")
+state("Virginia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/258.png")
+state("Virginia Tech", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/259.png")
+state("Wake Forest", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/154.png")
+state("Alabama", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/333.png")
+state("Alabama State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2011.png")
+state("Boise State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/68.png")
+state("Charlotte", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2429.png")
+state("Delaware", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/48.png")
+state("Elon", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2210.png")
+state("Florida", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/57.png")
+state("Furman", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/231.png")
+state("Georgia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/61.png")
+state("Holy Cross", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/107.png")
+state("Kansas", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2305.png")
+state("Liberty", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2335.png")
+state("Maryland", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/120.png")
+state("Mid Tennessee", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2393.png")
+state("NC A&T", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2448.png")
+state("Ohio", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/195.png")
+state("Old Dominion", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/295.png")
+state("Penn State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/213.png")
+state("Rice", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/242.png")
+state("Richmond", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/257.png")
+state("Rutgers", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/164.png")
+state("S Carolina", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2579.png")
+state("Temple", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/218.png")
+state("Texas A&M", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/245.png")
+state("The Citadel", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2643.png")
+state("UCF", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2116.png")
+state("UL Monroe", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2433.png")
+state("URI", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/227.png")
+state("USF", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/58.png")
+state("Utah State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/328.png")
+state("W Michigan", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2711.png")
+state("West Virginia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/277.png")
+state("William & Mary", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2729.png")
+state("Wofford", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2747.png")
+
+}
         valueTile("Value26a", "device.Value26", width: 2, height: 1){
-            state("week7team", label:'${currentValue}')}
+            state("game7team", label:'${currentValue}')}
         valueTile("Value27", "device.Value27", width: 1, height: 1){
-            state("week7home", label:'${currentValue}')}
+            state("game7home", label:'${currentValue}')}
         valueTile("Value28", "device.Value28", width: 1, height: 1){
-            state("week7score", label:'${currentValue}')}
+            state("game7score", label:'${currentValue}')}
         valueTile("Value29", "device.Value29", width: 1, height: 1){
-            state("week8date", label:'Week 8\n${currentValue}')}
+            state("game8date", label:'${currentValue}')}
         valueTile("Value30", "device.Value30", width: 1, height: 1){
            	state("OFF", label:'-')
-            state("Boston College", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/103.png")
-            state("Clemson", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/228.png")
-            state("Duke", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/150.png")
-            state("Florida State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/52.png")
-            state("Georgia Tech", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/59.png")
-            state("Louisville", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/97.png")
-            state("Miami", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2390.png")
-            state("NC State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/152.png")
-            state("North Carolina", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/153.png")
-            state("Notre Dame", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/87.png")
-            state("Pittsburgh", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/221.png")
-            state("Syracuse", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/183.png")
-            state("Virginia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/258.png")
-            state("Virginia Tech", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/259.png")
-            state("Wake Forest", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/154.png")
-            state("Furman", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/231.png")
-            state("Liberty", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2335.png")
-            state("Middle Tennessee", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2393.png")
-            state("Old Dominion", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/295.png")
-            state("Penn State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/213.png")
-            state("Rhode Island", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/227.png")
-            state("Richmond", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/257.png")
-            state("West Virginia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/277.png")}
+state("Default", label:'', icon:"https://a.thumbs.redditmedia.com/_JGFTy6V0bODjfUfADk3EsyNY_qwxCxAAqQP9IgWTX4.png")
+state("Boston College", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/103.png")
+state("Clemson", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/228.png")
+state("Duke", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/150.png")
+state("Florida State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/52.png")
+state("Georgia Tech", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/59.png")
+state("Louisville", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/97.png")
+state("Miami", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2390.png")
+state("NC State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/152.png")
+state("North Carolina", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/153.png")
+state("Notre Dame", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/87.png")
+state("Pittsburgh", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/221.png")
+state("Syracuse", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/183.png")
+state("Virginia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/258.png")
+state("Virginia Tech", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/259.png")
+state("Wake Forest", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/154.png")
+state("Alabama", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/333.png")
+state("Alabama State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2011.png")
+state("Boise State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/68.png")
+state("Charlotte", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2429.png")
+state("Delaware", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/48.png")
+state("Elon", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2210.png")
+state("Florida", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/57.png")
+state("Furman", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/231.png")
+state("Georgia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/61.png")
+state("Holy Cross", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/107.png")
+state("Kansas", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2305.png")
+state("Liberty", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2335.png")
+state("Maryland", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/120.png")
+state("Mid Tennessee", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2393.png")
+state("NC A&T", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2448.png")
+state("Ohio", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/195.png")
+state("Old Dominion", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/295.png")
+state("Penn State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/213.png")
+state("Rice", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/242.png")
+state("Richmond", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/257.png")
+state("Rutgers", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/164.png")
+state("S Carolina", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2579.png")
+state("Temple", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/218.png")
+state("Texas A&M", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/245.png")
+state("The Citadel", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2643.png")
+state("UCF", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2116.png")
+state("UL Monroe", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2433.png")
+state("URI", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/227.png")
+state("USF", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/58.png")
+state("Utah State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/328.png")
+state("W Michigan", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2711.png")
+state("West Virginia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/277.png")
+state("William & Mary", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2729.png")
+state("Wofford", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2747.png")
+
+}
         valueTile("Value30a", "device.Value30", width: 2, height: 1){
-            state("week8team", label:'${currentValue}')}
+            state("game8team", label:'${currentValue}')}
         valueTile("Value31", "device.Value31", width: 1, height: 1){
-            state("week8home", label:'${currentValue}')}
+            state("game8home", label:'${currentValue}')}
         valueTile("Value32", "device.Value32", width: 1, height: 1){
-            state("week8score", label:'${currentValue}')}
+            state("game8score", label:'${currentValue}')}
         valueTile("Value33", "device.Value33", width: 1, height: 1){
-            state("week9date", label:'Week 9\n${currentValue}')}
+            state("game9date", label:'${currentValue}')}
         valueTile("Value34", "device.Value34", width: 1, height: 1){
            	state("OFF", label:'-')
-            state("Boston College", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/103.png")
-            state("Clemson", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/228.png")
-            state("Duke", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/150.png")
-            state("Florida State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/52.png")
-            state("Georgia Tech", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/59.png")
-            state("Louisville", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/97.png")
-            state("Miami", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2390.png")
-            state("NC State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/152.png")
-            state("North Carolina", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/153.png")
-            state("Notre Dame", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/87.png")
-            state("Pittsburgh", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/221.png")
-            state("Syracuse", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/183.png")
-            state("Virginia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/258.png")
-            state("Virginia Tech", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/259.png")
-            state("Wake Forest", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/154.png")
-            state("Furman", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/231.png")
-            state("Liberty", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2335.png")
-            state("Middle Tennessee", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2393.png")
-            state("Old Dominion", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/295.png")
-            state("Penn State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/213.png")
-            state("Rhode Island", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/227.png")
-            state("Richmond", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/257.png")
-            state("West Virginia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/277.png")}
+state("Default", label:'', icon:"https://a.thumbs.redditmedia.com/_JGFTy6V0bODjfUfADk3EsyNY_qwxCxAAqQP9IgWTX4.png")
+state("Boston College", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/103.png")
+state("Clemson", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/228.png")
+state("Duke", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/150.png")
+state("Florida State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/52.png")
+state("Georgia Tech", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/59.png")
+state("Louisville", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/97.png")
+state("Miami", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2390.png")
+state("NC State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/152.png")
+state("North Carolina", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/153.png")
+state("Notre Dame", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/87.png")
+state("Pittsburgh", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/221.png")
+state("Syracuse", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/183.png")
+state("Virginia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/258.png")
+state("Virginia Tech", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/259.png")
+state("Wake Forest", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/154.png")
+state("Alabama", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/333.png")
+state("Alabama State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2011.png")
+state("Boise State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/68.png")
+state("Charlotte", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2429.png")
+state("Delaware", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/48.png")
+state("Elon", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2210.png")
+state("Florida", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/57.png")
+state("Furman", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/231.png")
+state("Georgia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/61.png")
+state("Holy Cross", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/107.png")
+state("Kansas", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2305.png")
+state("Liberty", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2335.png")
+state("Maryland", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/120.png")
+state("Mid Tennessee", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2393.png")
+state("NC A&T", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2448.png")
+state("Ohio", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/195.png")
+state("Old Dominion", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/295.png")
+state("Penn State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/213.png")
+state("Rice", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/242.png")
+state("Richmond", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/257.png")
+state("Rutgers", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/164.png")
+state("S Carolina", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2579.png")
+state("Temple", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/218.png")
+state("Texas A&M", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/245.png")
+state("The Citadel", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2643.png")
+state("UCF", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2116.png")
+state("UL Monroe", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2433.png")
+state("URI", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/227.png")
+state("USF", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/58.png")
+state("Utah State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/328.png")
+state("W Michigan", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2711.png")
+state("West Virginia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/277.png")
+state("William & Mary", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2729.png")
+state("Wofford", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2747.png")
+
+}
         valueTile("Value34a", "device.Value34", width: 2, height: 1){
-            state("week9team", label:'${currentValue}')}
+            state("game9team", label:'${currentValue}')}
         valueTile("Value35", "device.Value35", width: 1, height: 1){
-            state("week9home", label:'${currentValue}')}
+            state("game9home", label:'${currentValue}')}
         valueTile("Value36", "device.Value36", width: 1, height: 1){
-            state("week9score", label:'${currentValue}')}
+            state("game9score", label:'${currentValue}')}
         valueTile("Value37", "device.Value37", width: 1, height: 1){
-            state("week10date", label:'Week 10\n${currentValue}')}
+            state("game10date", label:'${currentValue}')}
         valueTile("Value38", "device.Value38", width: 1, height: 1){
            	state("OFF", label:'-')
-            state("Boston College", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/103.png")
-            state("Clemson", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/228.png")
-            state("Duke", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/150.png")
-            state("Florida State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/52.png")
-            state("Georgia Tech", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/59.png")
-            state("Louisville", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/97.png")
-            state("Miami", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2390.png")
-            state("NC State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/152.png")
-            state("North Carolina", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/153.png")
-            state("Notre Dame", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/87.png")
-            state("Pittsburgh", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/221.png")
-            state("Syracuse", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/183.png")
-            state("Virginia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/258.png")
-            state("Virginia Tech", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/259.png")
-            state("Wake Forest", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/154.png")
-            state("Furman", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/231.png")
-            state("Liberty", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2335.png")
-            state("Middle Tennessee", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2393.png")
-            state("Old Dominion", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/295.png")
-            state("Penn State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/213.png")
-            state("Rhode Island", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/227.png")
-            state("Richmond", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/257.png")
-            state("West Virginia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/277.png")}
+state("Default", label:'', icon:"https://a.thumbs.redditmedia.com/_JGFTy6V0bODjfUfADk3EsyNY_qwxCxAAqQP9IgWTX4.png")
+state("Boston College", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/103.png")
+state("Clemson", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/228.png")
+state("Duke", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/150.png")
+state("Florida State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/52.png")
+state("Georgia Tech", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/59.png")
+state("Louisville", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/97.png")
+state("Miami", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2390.png")
+state("NC State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/152.png")
+state("North Carolina", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/153.png")
+state("Notre Dame", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/87.png")
+state("Pittsburgh", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/221.png")
+state("Syracuse", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/183.png")
+state("Virginia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/258.png")
+state("Virginia Tech", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/259.png")
+state("Wake Forest", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/154.png")
+state("Alabama", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/333.png")
+state("Alabama State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2011.png")
+state("Boise State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/68.png")
+state("Charlotte", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2429.png")
+state("Delaware", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/48.png")
+state("Elon", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2210.png")
+state("Florida", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/57.png")
+state("Furman", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/231.png")
+state("Georgia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/61.png")
+state("Holy Cross", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/107.png")
+state("Kansas", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2305.png")
+state("Liberty", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2335.png")
+state("Maryland", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/120.png")
+state("Mid Tennessee", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2393.png")
+state("NC A&T", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2448.png")
+state("Ohio", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/195.png")
+state("Old Dominion", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/295.png")
+state("Penn State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/213.png")
+state("Rice", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/242.png")
+state("Richmond", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/257.png")
+state("Rutgers", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/164.png")
+state("S Carolina", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2579.png")
+state("Temple", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/218.png")
+state("Texas A&M", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/245.png")
+state("The Citadel", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2643.png")
+state("UCF", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2116.png")
+state("UL Monroe", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2433.png")
+state("URI", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/227.png")
+state("USF", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/58.png")
+state("Utah State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/328.png")
+state("W Michigan", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2711.png")
+state("West Virginia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/277.png")
+state("William & Mary", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2729.png")
+state("Wofford", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2747.png")
+
+}
         valueTile("Value38a", "device.Value38", width: 2, height: 1){
-            state("week10team", label:'${currentValue}')}
+            state("game10team", label:'${currentValue}')}
         valueTile("Value39", "device.Value39", width: 1, height: 1){
-            state("week10home", label:'${currentValue}')}
+            state("game10home", label:'${currentValue}')}
         valueTile("Value40", "device.Value40", width: 1, height: 1){
-            state("week10score", label:'${currentValue}')}
+            state("game10score", label:'${currentValue}')}
         valueTile("Value41", "device.Value41", width: 1, height: 1){
-            state("week11date", label:'Week 11\n${currentValue}')}
+            state("game11date", label:'${currentValue}')}
         valueTile("Value42", "device.Value42", width: 1, height: 1){
            	state("OFF", label:'-')
-            state("Boston College", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/103.png")
-            state("Clemson", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/228.png")
-            state("Duke", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/150.png")
-            state("Florida State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/52.png")
-            state("Georgia Tech", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/59.png")
-            state("Louisville", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/97.png")
-            state("Miami", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2390.png")
-            state("NC State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/152.png")
-            state("North Carolina", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/153.png")
-            state("Notre Dame", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/87.png")
-            state("Pittsburgh", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/221.png")
-            state("Syracuse", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/183.png")
-            state("Virginia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/258.png")
-            state("Virginia Tech", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/259.png")
-            state("Wake Forest", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/154.png")
-            state("Furman", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/231.png")
-            state("Liberty", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2335.png")
-            state("Middle Tennessee", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2393.png")
-            state("Old Dominion", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/295.png")
-            state("Penn State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/213.png")
-            state("Rhode Island", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/227.png")
-            state("Richmond", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/257.png")
-            state("West Virginia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/277.png")}
+state("Default", label:'', icon:"https://a.thumbs.redditmedia.com/_JGFTy6V0bODjfUfADk3EsyNY_qwxCxAAqQP9IgWTX4.png")
+state("Boston College", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/103.png")
+state("Clemson", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/228.png")
+state("Duke", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/150.png")
+state("Florida State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/52.png")
+state("Georgia Tech", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/59.png")
+state("Louisville", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/97.png")
+state("Miami", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2390.png")
+state("NC State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/152.png")
+state("North Carolina", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/153.png")
+state("Notre Dame", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/87.png")
+state("Pittsburgh", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/221.png")
+state("Syracuse", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/183.png")
+state("Virginia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/258.png")
+state("Virginia Tech", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/259.png")
+state("Wake Forest", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/154.png")
+state("Alabama", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/333.png")
+state("Alabama State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2011.png")
+state("Boise State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/68.png")
+state("Charlotte", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2429.png")
+state("Delaware", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/48.png")
+state("Elon", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2210.png")
+state("Florida", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/57.png")
+state("Furman", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/231.png")
+state("Georgia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/61.png")
+state("Holy Cross", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/107.png")
+state("Kansas", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2305.png")
+state("Liberty", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2335.png")
+state("Maryland", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/120.png")
+state("Mid Tennessee", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2393.png")
+state("NC A&T", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2448.png")
+state("Ohio", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/195.png")
+state("Old Dominion", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/295.png")
+state("Penn State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/213.png")
+state("Rice", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/242.png")
+state("Richmond", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/257.png")
+state("Rutgers", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/164.png")
+state("S Carolina", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2579.png")
+state("Temple", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/218.png")
+state("Texas A&M", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/245.png")
+state("The Citadel", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2643.png")
+state("UCF", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2116.png")
+state("UL Monroe", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2433.png")
+state("URI", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/227.png")
+state("USF", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/58.png")
+state("Utah State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/328.png")
+state("W Michigan", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2711.png")
+state("West Virginia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/277.png")
+state("William & Mary", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2729.png")
+state("Wofford", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2747.png")
+
+}
         valueTile("Value42a", "device.Value42", width: 2, height: 1){
-            state("week11team", label:'${currentValue}')}
+            state("game11team", label:'${currentValue}')}
         valueTile("Value43", "device.Value43", width: 1, height: 1){
-            state("week11home", label:'${currentValue}')}
+            state("game11home", label:'${currentValue}')}
         valueTile("Value44", "device.Value44", width: 1, height: 1){
-            state("week11score", label:'${currentValue}')}
+            state("game11score", label:'${currentValue}')}
         valueTile("Value45", "device.Value45", width: 1, height: 1){
-            state("week12date", label:'Week 12\n${currentValue}')}
+            state("game12date", label:'${currentValue}')}
         valueTile("Value46", "device.Value46", width: 1, height: 1){
            	state("OFF", label:'-')
-            state("Boston College", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/103.png")
-            state("Clemson", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/228.png")
-            state("Duke", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/150.png")
-            state("Florida State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/52.png")
-            state("Georgia Tech", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/59.png")
-            state("Louisville", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/97.png")
-            state("Miami", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2390.png")
-            state("NC State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/152.png")
-            state("North Carolina", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/153.png")
-            state("Notre Dame", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/87.png")
-            state("Pittsburgh", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/221.png")
-            state("Syracuse", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/183.png")
-            state("Virginia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/258.png")
-            state("Virginia Tech", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/259.png")
-            state("Wake Forest", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/154.png")
-            state("Furman", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/231.png")
-            state("Liberty", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2335.png")
-            state("Middle Tennessee", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2393.png")
-            state("Old Dominion", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/295.png")
-            state("Penn State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/213.png")
-            state("Rhode Island", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/227.png")
-            state("Richmond", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/257.png")
-            state("West Virginia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/277.png")}
+state("Default", label:'', icon:"https://a.thumbs.redditmedia.com/_JGFTy6V0bODjfUfADk3EsyNY_qwxCxAAqQP9IgWTX4.png")
+state("Boston College", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/103.png")
+state("Clemson", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/228.png")
+state("Duke", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/150.png")
+state("Florida State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/52.png")
+state("Georgia Tech", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/59.png")
+state("Louisville", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/97.png")
+state("Miami", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2390.png")
+state("NC State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/152.png")
+state("North Carolina", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/153.png")
+state("Notre Dame", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/87.png")
+state("Pittsburgh", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/221.png")
+state("Syracuse", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/183.png")
+state("Virginia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/258.png")
+state("Virginia Tech", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/259.png")
+state("Wake Forest", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/154.png")
+state("Alabama", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/333.png")
+state("Alabama State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2011.png")
+state("Boise State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/68.png")
+state("Charlotte", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2429.png")
+state("Delaware", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/48.png")
+state("Elon", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2210.png")
+state("Florida", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/57.png")
+state("Furman", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/231.png")
+state("Georgia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/61.png")
+state("Holy Cross", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/107.png")
+state("Kansas", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2305.png")
+state("Liberty", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2335.png")
+state("Maryland", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/120.png")
+state("Mid Tennessee", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2393.png")
+state("NC A&T", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2448.png")
+state("Ohio", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/195.png")
+state("Old Dominion", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/295.png")
+state("Penn State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/213.png")
+state("Rice", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/242.png")
+state("Richmond", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/257.png")
+state("Rutgers", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/164.png")
+state("S Carolina", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2579.png")
+state("Temple", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/218.png")
+state("Texas A&M", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/245.png")
+state("The Citadel", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2643.png")
+state("UCF", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2116.png")
+state("UL Monroe", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2433.png")
+state("URI", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/227.png")
+state("USF", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/58.png")
+state("Utah State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/328.png")
+state("W Michigan", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2711.png")
+state("West Virginia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/277.png")
+state("William & Mary", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2729.png")
+state("Wofford", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2747.png")
+}
         valueTile("Value46a", "device.Value46", width: 2, height: 1){
-            state("week12team", label:'${currentValue}')}
+            state("game12team", label:'${currentValue}')}
         valueTile("Value47", "device.Value47", width: 1, height: 1){
-            state("week12home", label:'${currentValue}')}
+            state("game12home", label:'${currentValue}')}
         valueTile("Value48", "device.Value48", width: 1, height: 1){
-            state("week12score", label:'${currentValue}')}
-        valueTile("Value49", "device.Value49", width: 1, height: 1){
-            state("week13date", label:'Week 13\n${currentValue}')}
-        valueTile("Value50", "device.Value50", width: 1, height: 1){
-           	state("OFF", label:'-')
-            state("Boston College", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/103.png")
-            state("Clemson", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/228.png")
-            state("Duke", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/150.png")
-            state("Florida State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/52.png")
-            state("Georgia Tech", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/59.png")
-            state("Louisville", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/97.png")
-            state("Miami", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2390.png")
-            state("NC State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/152.png")
-            state("North Carolina", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/153.png")
-            state("Notre Dame", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/87.png")
-            state("Pittsburgh", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/221.png")
-            state("Syracuse", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/183.png")
-            state("Virginia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/258.png")
-            state("Virginia Tech", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/259.png")
-            state("Wake Forest", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/154.png")
-            state("Furman", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/231.png")
-            state("Liberty", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2335.png")
-            state("Middle Tennessee", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2393.png")
-            state("Old Dominion", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/295.png")
-            state("Penn State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/213.png")
-            state("Rhode Island", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/227.png")
-            state("Richmond", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/257.png")
-            state("West Virginia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/277.png")}
-        valueTile("Value50a", "device.Value50", width: 2, height: 1){
-            state("week13team", label:'${currentValue}')}
-        valueTile("Value51", "device.Value51", width: 1, height: 1){
-            state("week13home", label:'${currentValue}')}
-        valueTile("Value52", "device.Value52", width: 1, height: 1){
-            state("week13score", label:'${currentValue}')}
-        valueTile("Value53", "device.Value53", width: 1, height: 1){
-            state("week14date", label:'Week 14\n${currentValue}')}
-        valueTile("Value54", "device.Value54", width: 1, height: 1){
-           	state("OFF", label:'-')
-            state("Boston College", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/103.png")
-            state("Clemson", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/228.png")
-            state("Duke", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/150.png")
-            state("Florida State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/52.png")
-            state("Georgia Tech", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/59.png")
-            state("Louisville", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/97.png")
-            state("Miami", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2390.png")
-            state("NC State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/152.png")
-            state("North Carolina", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/153.png")
-            state("Notre Dame", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/87.png")
-            state("Pittsburgh", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/221.png")
-            state("Syracuse", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/183.png")
-            state("Virginia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/258.png")
-            state("Virginia Tech", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/259.png")
-            state("Wake Forest", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/154.png")
-            state("Furman", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/231.png")
-            state("Liberty", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2335.png")
-            state("Middle Tennessee", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2393.png")
-            state("Old Dominion", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/295.png")
-            state("Penn State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/213.png")
-            state("Rhode Island", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/227.png")
-            state("Richmond", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/257.png")
-            state("West Virginia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/277.png")}
-        valueTile("Value54a", "device.Value54", width: 2, height: 1){
-            state("week14team", label:'${currentValue}')}
-        valueTile("Value55", "device.Value55", width: 1, height: 1){
-            state("week14home", label:'${currentValue}')}
-        valueTile("Value56", "device.Value56", width: 1, height: 1){
-            state("week14score", label:'${currentValue}')}
+            state("game12score", label:'${currentValue}')}
 
+        valueTile("Value84", "device.Value84", width: 1, height: 1){
+            state("game13date", label:'${currentValue}')}
+        valueTile("Value85", "device.Value85", width: 1, height: 1){
+           	state("OFF", label:'-')
+state("Default", label:'', icon:"https://a.thumbs.redditmedia.com/_JGFTy6V0bODjfUfADk3EsyNY_qwxCxAAqQP9IgWTX4.png")
+state("Boston College", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/103.png")
+state("Clemson", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/228.png")
+state("Duke", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/150.png")
+state("Florida State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/52.png")
+state("Georgia Tech", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/59.png")
+state("Louisville", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/97.png")
+state("Miami", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2390.png")
+state("NC State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/152.png")
+state("North Carolina", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/153.png")
+state("Notre Dame", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/87.png")
+state("Pittsburgh", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/221.png")
+state("Syracuse", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/183.png")
+state("Virginia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/258.png")
+state("Virginia Tech", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/259.png")
+state("Wake Forest", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/154.png")
+state("Alabama", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/333.png")
+state("Alabama State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2011.png")
+state("Boise State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/68.png")
+state("Charlotte", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2429.png")
+state("Delaware", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/48.png")
+state("Elon", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2210.png")
+state("Florida", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/57.png")
+state("Furman", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/231.png")
+state("Georgia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/61.png")
+state("Holy Cross", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/107.png")
+state("Kansas", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2305.png")
+state("Liberty", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2335.png")
+state("Maryland", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/120.png")
+state("Mid Tennessee", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2393.png")
+state("NC A&T", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2448.png")
+state("Ohio", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/195.png")
+state("Old Dominion", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/295.png")
+state("Penn State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/213.png")
+state("Rice", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/242.png")
+state("Richmond", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/257.png")
+state("Rutgers", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/164.png")
+state("S Carolina", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2579.png")
+state("Temple", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/218.png")
+state("Texas A&M", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/245.png")
+state("The Citadel", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2643.png")
+state("UCF", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2116.png")
+state("UL Monroe", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2433.png")
+state("URI", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/227.png")
+state("USF", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/58.png")
+state("Utah State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/328.png")
+state("W Michigan", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2711.png")
+state("West Virginia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/277.png")
+state("William & Mary", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2729.png")
+state("Wofford", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2747.png")
+}
+        valueTile("Value85a", "device.Value85", width: 2, height: 1){
+            state("game13team", label:'${currentValue}')}
+        valueTile("Value86", "device.Value86", width: 1, height: 1){
+            state("game13home", label:'${currentValue}')}
+        valueTile("Value87", "device.Value87", width: 1, height: 1){
+            state("game13score", label:'${currentValue}')}
+            
+        valueTile("Value88", "device.Value88", width: 1, height: 1){
+            state("game14date", label:'${currentValue}')}
+        valueTile("Value89", "device.Value89", width: 1, height: 1){
+           	state("OFF", label:'-')
+state("Default", label:'', icon:"https://a.thumbs.redditmedia.com/_JGFTy6V0bODjfUfADk3EsyNY_qwxCxAAqQP9IgWTX4.png")
+state("Boston College", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/103.png")
+state("Clemson", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/228.png")
+state("Duke", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/150.png")
+state("Florida State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/52.png")
+state("Georgia Tech", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/59.png")
+state("Louisville", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/97.png")
+state("Miami", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2390.png")
+state("NC State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/152.png")
+state("North Carolina", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/153.png")
+state("Notre Dame", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/87.png")
+state("Pittsburgh", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/221.png")
+state("Syracuse", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/183.png")
+state("Virginia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/258.png")
+state("Virginia Tech", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/259.png")
+state("Wake Forest", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/154.png")
+state("Alabama", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/333.png")
+state("Alabama State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2011.png")
+state("Boise State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/68.png")
+state("Charlotte", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2429.png")
+state("Delaware", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/48.png")
+state("Elon", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2210.png")
+state("Florida", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/57.png")
+state("Furman", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/231.png")
+state("Georgia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/61.png")
+state("Holy Cross", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/107.png")
+state("Kansas", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2305.png")
+state("Liberty", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2335.png")
+state("Maryland", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/120.png")
+state("Mid Tennessee", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2393.png")
+state("NC A&T", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2448.png")
+state("Ohio", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/195.png")
+state("Old Dominion", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/295.png")
+state("Penn State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/213.png")
+state("Rice", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/242.png")
+state("Richmond", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/257.png")
+state("Rutgers", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/164.png")
+state("S Carolina", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2579.png")
+state("Temple", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/218.png")
+state("Texas A&M", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/245.png")
+state("The Citadel", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2643.png")
+state("UCF", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2116.png")
+state("UL Monroe", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2433.png")
+state("URI", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/227.png")
+state("USF", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/58.png")
+state("Utah State", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/328.png")
+state("W Michigan", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2711.png")
+state("West Virginia", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/277.png")
+state("William & Mary", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2729.png")
+state("Wofford", label:'', icon:"https://a.espncdn.com/i/teamlogos/ncaa/500/2747.png")
+}
+        valueTile("Value89a", "device.Value89", width: 2, height: 1){
+            state("game14team", label:'${currentValue}')}
+        valueTile("Value90", "device.Value90", width: 1, height: 1){
+            state("game14home", label:'${currentValue}')}
+        valueTile("Value91", "device.Value91", width: 1, height: 1){
+            state("game14score", label:'${currentValue}')}
+
+        valueTile("atlantic", "atlantic", width: 3, height: 1){
+            state("default", label:'ACC - Atlantic')}
+        valueTile("atl1", "device.Value70", width: 3, height: 1){
+            state("default", label:'${currentValue}')}
+        valueTile("atl2", "device.Value72", width: 3, height: 1){
+            state("default", label:'${currentValue}')}
+        valueTile("atl3", "device.Value74", width: 3, height: 1){
+            state("default", label:'${currentValue}')}
+        valueTile("atl4", "device.Value76", width: 3, height: 1){
+            state("default", label:'${currentValue}')}
+        valueTile("atl5", "device.Value78", width: 3, height: 1){
+            state("default", label:'${currentValue}')}
+        valueTile("atl6", "device.Value80", width: 3, height: 1){
+            state("default", label:'${currentValue}')}
+        valueTile("atl7", "device.Value82", width: 3, height: 1){
+            state("default", label:'${currentValue}')}
+
+        valueTile("coastal", "coastal", width: 3, height: 1){
+            state("default", label:'ACC - Coastal')}
+        valueTile("coast1", "device.Value71", width: 3, height: 1){
+            state("default", label:'${currentValue}')}
+        valueTile("coast2", "device.Value73", width: 3, height: 1){
+            state("default", label:'${currentValue}')}
+        valueTile("coast3", "device.Value75", width: 3, height: 1){
+            state("default", label:'${currentValue}')}
+        valueTile("coast4", "device.Value77", width: 3, height: 1){
+            state("default", label:'${currentValue}')}
+        valueTile("coast5", "device.Value79", width: 3, height: 1){
+            state("default", label:'${currentValue}')}
+        valueTile("coast6", "device.Value81", width: 3, height: 1){
+            state("default", label:'${currentValue}')}
+        valueTile("coast7", "device.Value83", width: 3, height: 1){
+            state("default", label:'${currentValue}')}
         
  		main(["Main"])
- 		details(["button1","Logo","Header","Record","Value1","Value2","Value2a","Value3","Value4","Value5","Value6","Value6a","Value7","Value8","Value9","Value10","Value10a","Value11","Value12","Value13","Value14","Value14a","Value15","Value16","Value17","Value18","Value18a","Value19","Value20","Value21","Value22","Value22a","Value23","Value24","Value25","Value26","Value26a","Value27","Value28","Value29","Value30","Value30a","Value31","Value32","Value33","Value34","Value34a","Value35","Value36","Value37","Value38","Value38a","Value39","Value40","Value41","Value42","Value42a","Value43","Value44","Value45","Value46","Value46a","Value47","Value48","Value49","Value50","Value50a","Value51","Value52","Value53","Value54","Value54a","Value55","Value56"])
+ 		details(["button1","BoxScore_Header","BoxScore_blank","BoxScore_QTR1","BoxScore_QTR2","BoxScore_QTR3","BoxScore_QTR4","BoxScore_Final","BoxScore_Away","BoxScore_A_QTR1","BoxScore_A_QTR2","BoxScore_A_QTR3","BoxScore_A_QTR4","BoxScore_A_Final","BoxScore_Home","BoxScore_H_QTR1","BoxScore_H_QTR2","BoxScore_H_QTR3","BoxScore_H_QTR4","BoxScore_H_Final","Play_Header","Custom1","Custom2","Custom3","Custom4","Custom5","Logo","Header","Record","Value1","Value2","Value2a","Value3","Value4","Value5","Value6","Value6a","Value7","Value8","Value9","Value10","Value10a","Value11","Value12","Value13","Value14","Value14a","Value15","Value16","Value17","Value18","Value18a","Value19","Value20","Value21","Value22","Value22a","Value23","Value24","Value25","Value26","Value26a","Value27","Value28","Value29","Value30","Value30a","Value31","Value32","Value33","Value34","Value34a","Value35","Value36","Value37","Value38","Value38a","Value39","Value40","Value41","Value42","Value42a","Value43","Value44","Value45","Value46","Value46a","Value47","Value48","Value84","Value85","Value85a","Value86","Value87","Value88","Value89","Value89a","Value90","Value91","atlantic","coastal","atl1","coast1","atl2","coast2","atl3","coast3","atl4","coast4","atl5","coast5","atl6","coast6","atl7","coast7"])
  	}
  }
 
@@ -725,18 +1248,51 @@ def updated() {
 def initialize(){
     sendEvent(name: "Main", value: "${settings.accteam}")
     sendEvent(name: "Team", value: "${settings.accteam}")
+    sendEvent(name: "Team_Abbr", value: Team_Abbr())
     sendEvent(name: "Year", value: "${settings.year}")
     sendEvent(name: "Logo", value: "${settings.accteam}")
     sendEvent(name: "button1", value: "${settings.accteam}")
-    sendEvent(name: "Header", value: Heading())
+    sendEvent(name: "Header", value: "${settings.accteam} \n${settings.year} Schedule")
+	sendEvent(name: "secondary_header", value: "${device.Value54} \n${device.Value55}")
+    push1()
 }
-
+def Team_Abbr(){
+    if("${settings.accteam}" == "Boston College") {
+    	return "BC"
+    } else if("${settings.accteam}" == "Clemson") {
+    	return "CLEM"
+    } else if("${settings.accteam}" == "Duke") {
+    	return "DUKE"
+    } else if("${settings.accteam}" == "Florida State") {
+    	return "FSU"
+    } else if("${settings.accteam}" == "Georgia Tech") {
+    	return "GT"
+    } else if("${settings.accteam}" == "Louisville") {
+    	return "louisville-cardinals"
+    } else if("${settings.accteam}" == "Miami") {
+    	return "MIA"
+    } else if("${settings.accteam}" == "NC State") {
+    	return "NCST"
+    } else if("${settings.accteam}" == "North Carolina") {
+    	return "UNC"
+    } else if("${settings.accteam}" == "Notre Dame") {
+    	return "ND"
+    } else if("${settings.accteam}" == "Pittsburgh") {
+    	return "PITT"
+    } else if("${settings.accteam}" == "Syracuse") {
+    	return "SYR"
+    } else if("${settings.accteam}" == "Virginia") {
+    	return "UVA"
+    } else if("${settings.accteam}" == "Virginia Tech") {
+    	return "VT"
+    } else if("${settings.accteam}" == "Wake Forest") {
+    	return "WAKE"
+    } else{
+    	return "ACC"
+    }
+}
 def parse(String description) {
 }
-
-def Heading(){
-    return "${settings.accteam} \n${settings.year} Schedule"
-    }
 
  def changeValue1 (param1) {
     sendEvent("name":"Value1", "value":param1)
@@ -841,6 +1397,26 @@ def changeValue68 (param68) { sendEvent("name":"Value68", "value":param68)}
 def changeValue69 (param69) { sendEvent("name":"Value69", "value":param69)}
 def changeValue70 (param70) { sendEvent("name":"Value70", "value":param70)}
 def changeValue71 (param71) { sendEvent("name":"Value71", "value":param71)}
+def changeValue72 (param72) { sendEvent("name":"Value72", "value":param72)}
+def changeValue73 (param73) { sendEvent("name":"Value73", "value":param73)}
+def changeValue74 (param74) { sendEvent("name":"Value74", "value":param74)}
+def changeValue75 (param75) { sendEvent("name":"Value75", "value":param75)}
+def changeValue76 (param76) { sendEvent("name":"Value76", "value":param76)}
+def changeValue77 (param77) { sendEvent("name":"Value77", "value":param77)}
+def changeValue78 (param78) { sendEvent("name":"Value78", "value":param78)}
+def changeValue79 (param79) { sendEvent("name":"Value79", "value":param79)}
+def changeValue80 (param80) { sendEvent("name":"Value80", "value":param80)}
+def changeValue81 (param81) { sendEvent("name":"Value81", "value":param81)}
+def changeValue82 (param82) { sendEvent("name":"Value82", "value":param82)}
+def changeValue83 (param83) { sendEvent("name":"Value83", "value":param83)}
+def changeValue84 (param84) { sendEvent("name":"Value84", "value":param84)}
+def changeValue85 (param85) { sendEvent("name":"Value85", "value":param85)}
+def changeValue86 (param86) { sendEvent("name":"Value86", "value":param86)}
+def changeValue87 (param87) { sendEvent("name":"Value87", "value":param87)}
+def changeValue88 (param88) { sendEvent("name":"Value88", "value":param88)}
+def changeValue89 (param89) { sendEvent("name":"Value89", "value":param89)}
+def changeValue90 (param90) { sendEvent("name":"Value90", "value":param90)}
+def changeValue91 (param91) { sendEvent("name":"Value91", "value":param91)}
 
 def push1() {
 	push(1)
